@@ -5,7 +5,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import HoodieCategory from './pages/HoodieCategory';
 import ScrollToTop from './components/ScrollToTop';
-import { AnimatePresence } from 'motion/react';
+import { AnimatePresence, motion } from 'motion/react';
 
 function App() {
   const location = useLocation();
@@ -17,10 +17,12 @@ function App() {
       
       <main>
         <AnimatePresence mode="wait">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/hoodies" element={<HoodieCategory />} />
-          </Routes>
+          <motion.div key={location.pathname}>
+            <Routes location={location}>
+              <Route path="/" element={<Home />} />
+              <Route path="/hoodies" element={<HoodieCategory />} />
+            </Routes>
+          </motion.div>
         </AnimatePresence>
       </main>
 
