@@ -38,9 +38,9 @@ const Navbar = () => {
           
           <div className="hidden lg:flex items-center gap-12 text-[11px] font-bold uppercase tracking-[0.3em]">
             {navLinks.map((item, i) => (
-              <a key={i} href={item.href} className="relative hover:opacity-50 transition-opacity after:content-[''] after:absolute after:-bottom-2 after:left-0 after:w-0 after:h-px after:bg-black hover:after:w-full after:transition-all duration-500">
+              <Link key={i} to={item.href} className="relative hover:opacity-50 transition-opacity after:content-[''] after:absolute after:-bottom-2 after:left-0 after:w-0 after:h-px after:bg-black hover:after:w-full after:transition-all duration-500">
                 {item.name}
-              </a>
+              </Link>
             ))}
           </div>
 
@@ -68,21 +68,24 @@ const Navbar = () => {
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-40 bg-white/95 backdrop-blur-2xl flex flex-col justify-center px-12"
           >
-            <div className="flex flex-col gap-6 text-6xl md:text-8xl font-serif italic tracking-tighter">
-              {navLinks.map((item, i) => (
-                <motion.a 
-                  key={i}
-                  initial={{ x: -50, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: i * 0.1 }}
-                  href={item.href}
-                  onClick={() => setIsMenuOpen(false)} 
-                  className="hover:translate-x-6 transition-transform hover:text-neutral-400"
-                >
-                  {item.name}
-                </motion.a>
-              ))}
-            </div>
+              <div className="flex flex-col gap-6 text-6xl md:text-8xl font-serif italic tracking-tighter">
+                {navLinks.map((item, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ x: -50, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ delay: i * 0.1 }}
+                  >
+                    <Link 
+                      to={item.href}
+                      onClick={() => setIsMenuOpen(false)} 
+                      className="hover:translate-x-6 transition-transform hover:text-neutral-400 block"
+                    >
+                      {item.name}
+                    </Link>
+                  </motion.div>
+                ))}
+              </div>
           </motion.div>
         )}
       </AnimatePresence>

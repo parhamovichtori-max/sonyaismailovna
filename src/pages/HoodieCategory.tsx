@@ -444,7 +444,7 @@ export default function HoodieCategory() {
                   { label: 'Сроки', value: '10 дней (Бишкек) / 20 дней (Китай)' },
                   { label: 'Документы', value: 'Счет-фактура, сертификаты, НДС 18%' },
                 ].map((row, i) => (
-                  <div key={i} className={`grid grid-cols-1 md:grid-cols-3 p-10 items-center ${i !== 5 ? 'border-bottom border-black/5' : ''}`}>
+                  <div key={i} className={`grid grid-cols-1 md:grid-cols-3 p-10 items-center ${i !== 5 ? 'border-b border-black/5' : ''}`}>
                     <div className="text-[11px] font-bold uppercase tracking-widest text-neutral-400 mb-2 md:mb-0">{row.label}</div>
                     <div className="md:col-span-2 text-lg font-medium tracking-tight">{row.value}</div>
                   </div>

@@ -49,7 +49,12 @@ const Home = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="overflow-x-hidden">
+    <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="overflow-x-hidden"
+    >
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center pt-32 overflow-hidden">
         <div className="absolute top-0 right-0 w-1/3 h-full bg-[#f3f0eb] -z-10 hidden xl:block"></div>
@@ -381,7 +386,7 @@ const Home = () => {
           ))}
         </div>
       </section>
-    </div>
+    </motion.div>
   );
 };
 

@@ -1,7 +1,15 @@
 import React from 'react';
 import { Instagram, Send, MessageCircle } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
+  const navigation = [
+    { name: 'Каталог', href: '/#categories' },
+    { name: 'Преимущества', href: '/#advantages' },
+    { name: 'Заказ', href: '/#order' },
+    { name: 'Доставка', href: '/#delivery' },
+  ];
+
   return (
     <footer id="contacts" className="bg-[#0a0a0a] text-white pt-40 pb-20 px-8">
       <div className="max-w-[1600px] mx-auto">
@@ -26,11 +34,13 @@ const Footer = () => {
           <div className="lg:col-span-2">
             <h4 className="text-[11px] font-bold uppercase tracking-[0.4em] mb-12 text-neutral-600">Навигация</h4>
             <ul className="space-y-8 text-neutral-400 text-base">
-              {['Каталог', 'Производство', 'Доставка', 'Оптовикам'].map((item, i) => (
-                <li key={i}><a href="#" className="hover:text-white transition-colors flex items-center gap-3 group">
-                  <span className="w-0 h-px bg-white group-hover:w-4 transition-all"></span>
-                  {item}
-                </a></li>
+              {navigation.map((item, i) => (
+                <li key={i}>
+                  <Link to={item.href} className="hover:text-white transition-colors flex items-center gap-3 group">
+                    <span className="w-0 h-px bg-white group-hover:w-4 transition-all"></span>
+                    {item.name}
+                  </Link>
+                </li>
               ))}
             </ul>
           </div>
