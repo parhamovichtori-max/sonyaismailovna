@@ -22,120 +22,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
-const products = [
-  {
-    id: 1,
-    name: 'Худи oversize черный',
-    origin: 'Бишкек',
-    article: 'HD-001-BK',
-    specs: 'Футер 80/20, 330 г/м², карман-кенгуру',
-    sizes: 'S–5XL, удлиненная спина',
-    price: 6.5,
-    bulkPrice: 5.9,
-    bulkQty: '500+',
-    stock: '1500 шт',
-    image: 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=80&w=800&auto=format&fit=crop',
-    status: 'В наличии'
-  },
-  {
-    id: 2,
-    name: 'Худи с капюшоном серый',
-    origin: 'Бишкек',
-    article: 'HD-002-GR',
-    specs: 'Хлопок 100%, реглан, шнурки',
-    sizes: 'XS–3XL, принт возможен',
-    price: 7.0,
-    bulkPrice: 6.3,
-    bulkQty: '500+',
-    stock: '10 дней',
-    image: 'https://images.unsplash.com/photo-1564557287817-3785e38ec1f5?q=80&w=800&auto=format&fit=crop',
-    status: 'Под заказ'
-  },
-  {
-    id: 3,
-    name: 'Худи вязаный бежевый',
-    origin: 'Китай',
-    article: 'HD-003-BE',
-    specs: 'Крупная вязка, экопряжа',
-    sizes: 'M–XXL, тренд 2026',
-    price: 8.5,
-    bulkPrice: 7.7,
-    bulkQty: '300+',
-    stock: '20 дней',
-    image: 'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?q=80&w=800&auto=format&fit=crop',
-    status: 'Под заказ'
-  },
-  {
-    id: 4,
-    name: 'Худи унисекс белый',
-    origin: 'Бишкек',
-    article: 'HD-004-WH',
-    specs: 'Двойная манжета, для HoReCa',
-    sizes: 'S–4XL, усиленные швы',
-    price: 6.8,
-    bulkPrice: 6.1,
-    bulkQty: '500+',
-    stock: '800 шт',
-    image: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=800&auto=format&fit=crop',
-    status: 'В наличии'
-  },
-  {
-    id: 5,
-    name: 'Худи slim-fit синий',
-    origin: 'Бишкек',
-    article: 'HD-005-BL',
-    specs: 'Интерлок, без капюшона',
-    sizes: 'S–XXL, спортивный крой',
-    price: 6.2,
-    bulkPrice: 5.6,
-    bulkQty: '500+',
-    stock: '1200 шт',
-    image: 'https://images.unsplash.com/photo-1578587018452-892bacefd3f2?q=80&w=800&auto=format&fit=crop',
-    status: 'В наличии'
-  },
-  {
-    id: 6,
-    name: 'Худи с принтом черный',
-    origin: 'Бишкек',
-    article: 'HD-006-BK',
-    specs: 'Футер, DTF-принт спереди',
-    sizes: 'M–4XL, мерч-вариант',
-    price: 7.2,
-    bulkPrice: 6.5,
-    bulkQty: '500+',
-    stock: '10 дней',
-    image: 'https://images.unsplash.com/photo-1554568218-0f1715e72254?q=80&w=800&auto=format&fit=crop',
-    status: 'Под заказ'
-  },
-  {
-    id: 7,
-    name: 'Худи оверсайз меланж',
-    origin: 'Китай',
-    article: 'HD-007-ME',
-    specs: 'Вязка меланж, капюшон',
-    sizes: 'L–5XL, уличный стиль',
-    price: 8.0,
-    bulkPrice: 7.2,
-    bulkQty: '300+',
-    stock: '20 дней',
-    image: 'https://images.unsplash.com/photo-1513789172139-c1f25c0bc8e8?q=80&w=800&auto=format&fit=crop',
-    status: 'Под заказ'
-  },
-  {
-    id: 8,
-    name: 'Худи классика зеленый',
-    origin: 'Бишкек',
-    article: 'HD-008-GR',
-    specs: 'Хлопок, карман-кенгуру',
-    sizes: 'S–3XL, базовый вариант',
-    price: 6.7,
-    bulkPrice: 6.0,
-    bulkQty: '500+',
-    stock: '2000 шт',
-    image: 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=80&w=800&auto=format&fit=crop',
-    status: 'В наличии'
-  }
-];
+import { products } from '../constants/products';
 
 const filters = {
   origin: ['Бишкек (10 дней)', 'Китай (20 дней)'],
@@ -296,7 +183,10 @@ export default function HoodieCategory() {
                 transition={{ delay: idx * 0.05 }}
                 className={`group bg-white rounded-[2.5rem] border border-black/5 overflow-hidden hover:shadow-2xl transition-all duration-500 ${viewMode === 'list' ? 'flex flex-col md:flex-row' : ''}`}
               >
-                <div className={`relative overflow-hidden bg-neutral-100 ${viewMode === 'list' ? 'md:w-1/3 aspect-square' : 'aspect-[4/5]'}`}>
+                <div 
+                  onClick={() => navigate(`/product/${product.id}`)}
+                  className={`relative overflow-hidden bg-neutral-100 cursor-pointer ${viewMode === 'list' ? 'md:w-1/3 aspect-square' : 'aspect-[4/5]'}`}
+                >
                   <img 
                     src={product.image} 
                     alt={product.name} 
@@ -317,7 +207,7 @@ export default function HoodieCategory() {
                 </div>
 
                 <div className={`p-10 flex flex-col justify-between ${viewMode === 'list' ? 'md:w-2/3' : ''}`}>
-                  <div>
+                  <div onClick={() => navigate(`/product/${product.id}`)} className="cursor-pointer">
                     <div className="flex items-center justify-between mb-4">
                       <span className="text-[10px] font-mono text-neutral-400 uppercase tracking-widest">{product.article}</span>
                       <span className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest">{product.stock}</span>
@@ -345,8 +235,11 @@ export default function HoodieCategory() {
                       </div>
                     </div>
                     <div className="flex gap-3">
-                      <button className="flex-1 py-4 bg-black text-white text-[10px] font-bold uppercase tracking-[0.2em] rounded-full hover:bg-neutral-800 transition-all">
-                        В корзину
+                      <button 
+                        onClick={() => navigate(`/product/${product.id}`)}
+                        className="flex-1 py-4 bg-black text-white text-[10px] font-bold uppercase tracking-[0.2em] rounded-full hover:bg-neutral-800 transition-all"
+                      >
+                        Подробнее
                       </button>
                       <button className="w-12 h-12 border border-black/10 rounded-full flex items-center justify-center hover:bg-black hover:text-white transition-all">
                         <ChevronDown size={18} />

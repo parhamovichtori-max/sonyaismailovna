@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import HoodieCategory from './pages/HoodieCategory';
+import ProductDetail from './pages/ProductDetail';
 import ScrollToTop from './components/ScrollToTop';
 import { AnimatePresence, motion } from 'motion/react';
 
@@ -21,6 +22,7 @@ function App() {
             <Routes location={location}>
               <Route path="/" element={<Home />} />
               <Route path="/hoodies" element={<HoodieCategory />} />
+              <Route path="/product/:id" element={<ProductDetail />} />
             </Routes>
           </motion.div>
         </AnimatePresence>
